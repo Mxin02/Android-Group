@@ -1,0 +1,56 @@
+apply plugin: 'com.android.application'
+//apply plugin: 'com.jakewharton.butterknife'
+
+android {
+    compileSdkVersion 26
+    buildToolsVersion "27.0.0"
+    useLibrary 'org.apache.http.legacy'
+
+    defaultConfig {
+        applicationId "com.mxin.android.group_cniao"
+        minSdkVersion 16
+        targetSdkVersion 26
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        ndk {
+            abiFilters "armeabi", "armeabi-v7a", "arm64-v8a", "mips", "mips64", "x86", "x86_64"
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    sourceSets {
+        main {
+            jniLibs.srcDirs = ['libs']
+        }
+}
+
+dependencies{
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    implementation 'com.android.support:appcompat-v7:26.1.0'
+    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation 'com.android.support:support-v4:26.1.0'
+    testImplementation 'junit:junit:4.12'
+    androidTestImplementation 'com.android.support.test:runner:1.0.1'
+    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //    implementation 'com.google.code.gson:gson:2.2.4'
+    //nottp
+    implementation 'com.yolanda.nohttp:nohttp:1.0.4'
+    //其他库
+    compile 'com.facebook.fresco:fresco:0.12.0'
+    compile 'cn.bmob.android:bmob-sdk:3.5.0'
+    //bmob
+    // compile 'com.sina.weibo.sdk:core:2.0.3:openDefaultRelease@aar'
+    //新浪微博
+    implementation project(':weiboSDKold')
+    //eventbus登录传值
+    compile 'org.greenrobot:eventbus:3.1.1'}
+}
